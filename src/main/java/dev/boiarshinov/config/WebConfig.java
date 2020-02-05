@@ -1,7 +1,7 @@
 package dev.boiarshinov.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import dev.boiarshinov.dao.DataBase;
+import dev.boiarshinov.dao.NonogramDAO;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -15,7 +15,7 @@ public class WebConfig implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         registerDBDrivers();
         ComboPooledDataSource connectionPool = getConnectionPool();
-        sce.getServletContext().setAttribute("database", new DataBase(connectionPool));
+        sce.getServletContext().setAttribute("nonogramDAO", new NonogramDAO(connectionPool));
     }
 
     @Override

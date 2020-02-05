@@ -1,10 +1,5 @@
 package dev.boiarshinov;
 
-import dev.boiarshinov.dao.DataBase;
-import dev.boiarshinov.model.Nonogram;
-
-import java.util.List;
-
 public class JdbcTest {
     public static void main(String[] args){
 
