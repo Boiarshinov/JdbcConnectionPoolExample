@@ -1,5 +1,6 @@
 package dev.boiarshinov.controller;
 
+import dev.boiarshinov.dao.DAO;
 import dev.boiarshinov.dao.NonogramDAO;
 import dev.boiarshinov.model.Nonogram;
 
@@ -13,14 +14,9 @@ import java.util.List;
 public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        NonogramDAO nonogramDAO = (NonogramDAO) getServletContext().getAttribute("nonogramDAO");
+        DAO<Nonogram> nonogramDAO = (NonogramDAO) getServletContext().getAttribute("nonogramDAO");
         List<Nonogram> nonograms = nonogramDAO.getAll();
         req.getSession().setAttribute("nonograms", nonograms);
-
-        for (Nonogram nonogram : (List<Nonogram>) req.getSession().getAttribute("nonograms")){
-            System.out.println(nonogram);
-        }
-
         req.getRequestDispatcher("/main.jsp").forward(req, resp);
     }
 

@@ -7,14 +7,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NonogramDAO {
+public class NonogramDAO implements DAO<Nonogram>{
     ComboPooledDataSource connectionPool;
 
     public NonogramDAO(ComboPooledDataSource connectionPool) {
         this.connectionPool = connectionPool;
     }
 
-    public boolean add(Nonogram nonogram){
+    @Override
+    public void add(Nonogram nonogram){
         try (Connection connection = getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO nonograms (width, height, name) VALUES (?, ?, ?)");
@@ -22,13 +23,12 @@ public class NonogramDAO {
             preparedStatement.setByte(2, nonogram.getHeight());
             preparedStatement.setString(3, nonogram.getName());
             preparedStatement.executeUpdate();
-            return true;
         } catch (SQLException e){
             e.printStackTrace();
-            return false;
         }
     }
 
+    @Override
     public List<Nonogram> getAll(){
         List<Nonogram> list = new ArrayList<>();
 
@@ -53,21 +53,20 @@ public class NonogramDAO {
         return list;
     }
 
-    public boolean deleteById(int id){
+    @Override
+    public void deleteById(int id){
         try (Connection connection = getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "DELETE FROM nonograms WHERE id = ?");
             preparedStatement.setInt(1, id);
-            return preparedStatement.execute();
+            preparedStatement.execute();
 
         } catch (SQLException e){
             e.printStackTrace();
-            return false;
         }
     }
 
     private Connection getConnection() throws SQLException {
-        Connection connection = connectionPool.getConnection();
-        return connection;
+        return connectionPool.getConnection();
     }
 }

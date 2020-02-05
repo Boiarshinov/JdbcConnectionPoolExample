@@ -1,5 +1,6 @@
 package dev.boiarshinov.controller;
 
+import dev.boiarshinov.dao.DAO;
 import dev.boiarshinov.dao.NonogramDAO;
 import dev.boiarshinov.model.Nonogram;
 
@@ -17,7 +18,7 @@ public class Add extends HttpServlet {
         byte height = Byte.parseByte(req.getParameter("height"));
         Nonogram nonogram = new Nonogram(name, width, height);
 
-        NonogramDAO nonogramDAO = (NonogramDAO) getServletContext().getAttribute("nonogramDAO");
+        DAO<Nonogram> nonogramDAO = (NonogramDAO) getServletContext().getAttribute("nonogramDAO");
         nonogramDAO.add(nonogram);
 
         resp.sendRedirect("/");
