@@ -23,7 +23,7 @@
 
   <servlet>
     <servlet-name>delete</servlet-name>
-    <servlet-class>dev.boiarshinov.controller.Delete</servlet-class>
+    <servlet-class>dev.boiarshinov.controller.DeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>delete</servlet-name>
@@ -32,7 +32,7 @@
 
   <servlet>
     <servlet-name>add</servlet-name>
-    <servlet-class>dev.boiarshinov.controller.Add</servlet-class>
+    <servlet-class>dev.boiarshinov.controller.AddServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>add</servlet-name>

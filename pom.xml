@@ -10,8 +10,6 @@
   <packaging>war</packaging>
 
   <name>jdbc-connection-pool-example Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,6 +18,8 @@
     <javaee-version>8.0.1</javaee-version>
     <jstl-version>1.2</jstl-version>
     <c3p0-version>0.9.5.5</c3p0-version>
+    <logback-version>1.2.3</logback-version>
+    <slf4j-version>1.7.30</slf4j-version>
   </properties>
 
   <dependencies>
@@ -42,6 +42,21 @@
       <groupId>com.mchange</groupId>
       <artifactId>c3p0</artifactId>
       <version>${c3p0-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>${logback-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j-version}</version>
     </dependency>
   </dependencies>
 
