@@ -18,7 +18,7 @@
     <javaee-version>8.0.1</javaee-version>
     <jstl-version>1.2</jstl-version>
     <c3p0-version>0.9.5.5</c3p0-version>
-    <logback-version>1.2.3</logback-version>
+    <logback-version>1.3.12</logback-version>
     <slf4j-version>1.7.30</slf4j-version>
   </properties>
 
